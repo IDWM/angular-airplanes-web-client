@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -11,4 +11,10 @@ import { AuthService } from '../../services/auth.service';
 })
 export class NavbarComponent {
   protected readonly authService = inject(AuthService);
+  private readonly router = inject(Router);
+
+  onLogout() {
+    this.authService.logout();
+    this.router.navigate(['/']);
+  }
 }
