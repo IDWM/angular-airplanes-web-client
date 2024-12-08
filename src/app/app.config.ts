@@ -10,6 +10,7 @@ import {
   withInterceptors,
 } from '@angular/common/http';
 import { jwtInterceptor } from './interceptors/jwt.interceptor';
+import { ToastService } from './services/toast.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -18,5 +19,6 @@ export const appConfig: ApplicationConfig = {
     provideClientHydration(),
     provideAnimations(),
     provideHttpClient(withFetch(), withInterceptors([jwtInterceptor])),
+    ToastService,
   ],
 };
